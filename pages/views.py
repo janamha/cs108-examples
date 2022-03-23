@@ -14,3 +14,13 @@ class AboutPageView(TemplateView):
     '''A specialized version of TemplateView to display our about page.'''
 
     template_name = "pages/about.html"
+
+class BasePageView(TemplateView):
+    '''A specialized version of TemplateView to display our base page.'''
+
+    template_name = "pages/base.html"
+    
+class SchedulePageView(TemplateView):
+    '''A specialized version of TemplateView to display our schedule page.'''
+
+    template_name = "pages/schedule.html"
