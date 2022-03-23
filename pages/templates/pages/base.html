@@ -1,15 +1,22 @@
 <!-- pages/base.html -->
-
 <html>
     <head>
-        <title>Home Page</title>
+        <title>Our Webpages</title>
     </head>
     <body>
-        <h1>Hello, World!</h1>
-        <p>
-        This is our first Django application!
-        </p>
-
-        <hr> Create by janamha@bu.edu
+    <!-- navigation links -->
+    <header>
+        <a href="{% url 'home' %}">Home</a> |
+        <a href="{% url 'about' %}">About</a> |
+        <a href="{% url 'schedule' %}">Schedule</a>
+    </header>
+    <!-- this content block will be filled in by another template 
+        which extends this base.html page. -->
+    {% block content %}
+    {% endblock %}
+    <hr>
+    This page was brought to you by janamha@bu.edu.
     </body>
+
+    <hr> Create by janamha@bu.edu
 </html>
