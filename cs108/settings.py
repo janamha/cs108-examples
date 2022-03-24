@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pages.apps.PagesConfig',
+    'quotes.apps.QuotesConfig',
+    'mini_fb.apps.MiniFbConfig',
 
 ]
 
@@ -59,6 +61,7 @@ TEMPLATES = [
         'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
+            'string_if_invalid': 'NameError: template variable [%s] is not defined in this context.', ### ADD THIS LINE
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',

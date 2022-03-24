@@ -19,4 +19,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pages.urls')),  ## add this new URL include
+    path('quotes/', include('quotes.urls')), # include the URLs from our quotes project's urls.py file
+    path('mini_fb/', include('mini_fb.urls')),  ## add this new URL include
 ]
