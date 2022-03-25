@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pages.apps.PagesConfig',
     'quotes.apps.QuotesConfig',
-    # 'mini_fb.apps.MiniFbConfig',
+    'mini_fb.apps.MiniFbConfig',
 
 ]
 
