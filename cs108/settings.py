@@ -9,6 +9,9 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
+# your name: Jana Mikaela Aguilar
+# your email: janamha@bu.edu
+# Description: Django settings for cs108 project.
 
 from pathlib import Path
 

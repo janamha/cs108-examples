@@ -1,10 +1,12 @@
+# File: models.py
+# your name: Jana Mikaela Aguilar
+# your email: janamha@bu.edu
+# Description: Where you create models for your app and stirng representation
+
 from django.db import models
 
-# Create your models here.
-##### mini_fb/ models.py #####
-
 class Profile(models.Model):
-    '''Encapsulate the idea of a quote by some author (i.e., text).'''
+    '''Encapsulate the idea of a Profile.'''
 
     # data attributes of a profile:
     first_name = models.TextField(blank=True)
