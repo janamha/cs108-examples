@@ -15,7 +15,24 @@ class Profile(models.Model):
     email = models.TextField(blank=True)   
     image_url = models.URLField(blank=True)
 
+    def get_status_messages(self):
+        '''Return all status messages for this Profile.'''
+
+        # use the object manager to filter Quotes by this person's pk:
+        return StatusMessage.objects.filter(profile=self)
 
     def __str__(self):
         '''Return a string representation of this Profile object.'''
         return f'"{self.first_name}" - {self.last_name} - {self.city} - {self.email}'
+
+class StatusMessage(models.Model):
+    "Encapsulate the idea of a Facebook Status Message"
+    
+    # data attributes of a message:
+    timestamp = models.TimeField(blank=True)
+    message = models.TextField(blank=True)
+    profile = models.ForeignKey('Profile', on_delete=models.CASCADE)
+
+    def __str__(self):
+        '''Return a string representation of this Status Message object.'''
+        return f'"{self.timestamp}" - {self.message} - {self.profile}'

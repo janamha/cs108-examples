@@ -4,5 +4,6 @@ from django.contrib import admin
 # your email: janamha@bu.edu
 # Description: Register models here
 
-from .models import Profile
+from .models import Profile, StatusMessage
 admin.site.register(Profile)
+admin.site.register(StatusMessage)
