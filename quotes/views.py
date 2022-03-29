@@ -1,8 +1,8 @@
 ##### quotes/views.py #####
 
 from .models import Quote, Person
-from django.views.generic import ListView, DetailView
-import random
+from django.views.generic import ListView, DetailView, CreateView, UpdateView ## NEW
+from .forms import CreateQuoteForm, UpdateQuoteForm ## NEW
 
 class HomePageView(ListView):
     '''Create a subclass of ListView to display all quotes.'''
@@ -37,3 +37,17 @@ class PersonPageView(DetailView):
     model = Person
     template_name = 'quotes/person.html'
     context_object_name = 'person'
+
+class CreateQuoteView(CreateView):
+    '''Create a new Quote object and store it in the database.'''
+
+    model = Quote # which model to create
+    form_class = CreateQuoteForm # which form to use to create the Quote
+    template_name = "quotes/create_quote_form.html" # delegate the dispay to this template
+
+class UpdateQuoteView(UpdateView):
+    '''Update an existing Quote object and store it in the database.'''
+
+    model = Quote # which model to create
+    form_class = UpdateQuoteForm # which form to use to create the Quote
+    template_name = "quotes/create_quote_form.html" # delegate the display to this template
