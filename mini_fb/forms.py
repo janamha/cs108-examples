@@ -1,3 +1,8 @@
+# File: forms.py
+# your name: Jana Mikaela Aguilar
+# your email: janamha@bu.edu
+# Description: Where you create HTML forms
+
 from django import forms
 from .models import Profile, StatusMessage
 

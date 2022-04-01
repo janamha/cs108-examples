@@ -1,4 +1,8 @@
-##### mini_fb/urls.py #####
+# File: urls.py
+# your name: Jana Mikaela Aguilar
+# your email: janamha@bu.edu
+# Description: direct URL requests to view functions
+
 
 from django.urls import path
 from .views import ShowAllProfilesView, ShowProfilePageView, CreateProfileView, UpdateProfileView, post_status_message # our view class definition 
