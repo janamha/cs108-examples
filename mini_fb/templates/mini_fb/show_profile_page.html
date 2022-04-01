@@ -10,7 +10,7 @@
 <center>
     <h1>{{profile.first_name}} {{profile.last_name}}<br></h1>
     <img src="{{profile.image_url}}" style="max-width: 400;"><br>
-    <h4><a href="{% url 'update_profile' profile.pk %}">Update this profile</a></h4>
+    <h4><a href="{% url 'update_profile' profile.pk %}">Edit this profile</a></h4>
 </center>
 {{profile.email}} <br>
 {{profile.city}} <br>
@@ -37,5 +37,20 @@
         </tr>
     {% endfor %}
 </table> 
+
+<h3>Create Status Message</h3>
+
+<form method="POST" action='{% url "post_status" profile.pk %}' > <!-- HTTP POST to send data to the server -->
+    {% csrf_token %}
+    
+    <table>
+    {{create_status_form.as_table}} <!-- table-style formatting -->
+    <tr>
+        <td></td> <!-- empty! -->
+        <td><input type="submit" value='Post Status Message'></td>
+    </tr>
+    </table>
+    
+</form>
 
 {% endblock %}
