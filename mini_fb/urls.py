@@ -5,7 +5,7 @@
 
 
 from django.urls import path
-from .views import ShowAllProfilesView, ShowProfilePageView, CreateProfileView, UpdateProfileView, post_status_message # our view class definition 
+from .views import DeleteStatusMessageView, ShowAllProfilesView, ShowProfilePageView, CreateProfileView, UpdateProfileView, post_status_message # our view class definition 
 
 urlpatterns = [
     # map the URL (empty string) to the view
@@ -14,4 +14,6 @@ urlpatterns = [
     path('create_profile', CreateProfileView.as_view(), name='create_profile'), ## NEW
     path('profile/<int:pk>/update', UpdateProfileView.as_view(), name="update_profile"), 
     path('profile/<int:pk>/post_status', post_status_message, name="post_status"), 
+    path('profile/<int:profile_pk>/delete_status/<int:status_pk>', DeleteStatusMessageView.as_view(), name="delete_status"), 
+
 ]

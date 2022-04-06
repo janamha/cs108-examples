@@ -1,0 +1,28 @@
+<!--
+# File: templates/delete_status_form.html
+# your name: Jana Mikaela Aguilar
+# your email: janamha@bu.edu
+# Description: Write html code this to create delete a status message
+-->
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+
+<h3>Are you sure you want to delete this message?</h3>
+
+{{status}}
+<p>
+
+</p>
+
+<form method='POST'>
+    {% csrf_token %}
+    <input type='submit' name="yes" value="yes">
+</form>
+
+<form method='GET' action="{% url 'show_profile_page' status.profile.pk %}">
+    {% csrf_token %}
+    <input type='submit' name="no" value="no">
+</form>
+
+{% endblock %}

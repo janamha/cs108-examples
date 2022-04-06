@@ -19,7 +19,7 @@ class Profile(models.Model):
     def get_status_messages(self):
         '''Return all status messages for this Profile.'''
 
-        # use the object manager to filter Quotes by this person's pk:
+        # use the object manager to filter Status Messages by this person's pk:
         return StatusMessage.objects.filter(profile=self)
 
     def get_absolute_url(self):
@@ -37,7 +37,8 @@ class StatusMessage(models.Model):
     timestamp = models.TimeField(auto_now=True)
     message = models.TextField(blank=True)
     profile = models.ForeignKey('Profile', on_delete=models.CASCADE)
+    image = models.ImageField(blank=True)
 
     def __str__(self):
         '''Return a string representation of this Status Message object.'''
-        return f'"{self.timestamp}" - {self.message} - {self.profile}'
+        return f'"{self.timestamp}" - {self.message} - {self.profile} - {self.image}'
