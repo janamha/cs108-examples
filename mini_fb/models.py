@@ -3,6 +3,7 @@
 # your email: janamha@bu.edu
 # Description: Where you create models for your app and stirng representation
 
+import profile
 from django.db import models
 from django.urls import reverse
 
@@ -15,6 +16,7 @@ class Profile(models.Model):
     city = models.TextField(blank=True)
     email = models.TextField(blank=True)   
     image_url = models.URLField(blank=True)
+    friends = models.ManyToManyField("self")
 
     def get_status_messages(self):
         '''Return all status messages for this Profile.'''
@@ -25,6 +27,11 @@ class Profile(models.Model):
     def get_absolute_url(self):
         '''Return a URL to display this profile object.'''
         return reverse("show_profile_page", kwargs={"pk": self.pk})
+
+    def get_friends(self):
+        '''Return all friends for this Profile.'''
+
+        return self.friends.all()
 
     def __str__(self):
         '''Return a string representation of this Profile object.'''

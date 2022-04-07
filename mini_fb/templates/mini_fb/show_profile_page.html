@@ -60,5 +60,26 @@ enctype="multipart/form-data">
     </table>
     
 </form>
+<h2>Friends</h2>
+{% if profile.get_friends %}
+    <table>
+        <colgroup>
+            <col span="1" style="width: 15%">
+            <col span="1" style="width: 15%">
+        </colgroup>
+        {% for f in profile.get_friends %}
+            <tr>
+                <td>
+                    {{f.first_name}} {{f.last_name}}
+                </td>
+                <td>
+                    <img src='{{f.image.url}}' style='max-width: 200;'>
+                </td>
+            </tr>
+        {% endfor %}
+    </table> 
+{% else %}
+{{profile.first_name}} doesn't have any friends.
+{% endif %}
 
 {% endblock %}
