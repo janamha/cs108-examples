@@ -18,6 +18,45 @@
 {{profile.email}} <br>
 {{profile.city}} <br>
 <br>
+
+<h3>Create Status Message</h3>
+
+<form method="POST" action="/mini_fb/profile/{{profile.pk}}/post_status" 
+enctype="multipart/form-data">
+    <!-- HTTP POST to send data to the server -->
+    {% csrf_token %}
+    
+    <table>
+    {{create_status_form.as_table}} <!-- table-style formatting -->
+    <tr>
+        <td></td> <!-- empty! -->
+        <td><input type="submit" value='Post Status Message'></td>
+    </tr>
+    </table>
+    
+</form>
+<h2>Friends</h2>
+{% if profile.get_friends %}
+    <table>
+        <colgroup>
+            <col span="1" style="width: 15%">
+            <col span="1" style="width: 15%">
+        </colgroup>
+        {% for f in profile.get_friends %}
+            <tr>
+                <td>
+                    <a href="{% url 'show_profile_page' pk=f.pk %}">{{f.first_name}} {{f.last_name}}</a>
+                </td>
+                <td>
+                    <img src='{{f.image_url}}' style='max-width: 200;'>
+                </td>
+            </tr>
+        {% endfor %}
+    </table> 
+{% else %}
+{{profile.first_name}} doesn't have any friends.
+{% endif %}
+
 <h2>Status Messages</h2> <br>
 
 <table>
@@ -46,43 +85,5 @@
         </tr>
     {% endfor %}
 </table> 
-
-<h3>Create Status Message</h3>
-
-<form method="POST" action="/mini_fb/profile/{{profile.pk}}/post_status" 
-enctype="multipart/form-data">
-    <!-- HTTP POST to send data to the server -->
-    {% csrf_token %}
-    
-    <table>
-    {{create_status_form.as_table}} <!-- table-style formatting -->
-    <tr>
-        <td></td> <!-- empty! -->
-        <td><input type="submit" value='Post Status Message'></td>
-    </tr>
-    </table>
-    
-</form>
-<h2>Friends</h2>
-{% if profile.get_friends %}
-    <table>
-        <colgroup>
-            <col span="1" style="width: 15%">
-            <col span="1" style="width: 15%">
-        </colgroup>
-        {% for f in profile.get_friends %}
-            <tr>
-                <td>
-                    {{f.first_name}} {{f.last_name}}
-                </td>
-                <td>
-                    <img src='{{f.image_url}}' style='max-width: 200;'>
-                </td>
-            </tr>
-        {% endfor %}
-    </table> 
-{% else %}
-{{profile.first_name}} doesn't have any friends.
-{% endif %}
 
 {% endblock %}
