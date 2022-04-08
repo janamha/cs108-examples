@@ -33,6 +33,20 @@ class Profile(models.Model):
 
         return self.friends.all()
 
+    def get_news_feed(self):
+        '''Obtains and returns newsfeed items'''
+
+
+        news = StatusMessage.objects.filter(profile__in=self.get_friends()).order_by("-timestamp")
+        return news
+
+    def get_friend_suggestions(self):
+        'obtain and return a QuerySet of all Profile that could be added as friends.'
+
+        # returns profiles
+        possible_friends = friend_suggestions = Profile.objects.exclude(pk__in=self.friends.all()).exclude(pk=self.pk)
+        return possible_friends
+
     def __str__(self):
         '''Return a string representation of this Profile object.'''
         return f'"{self.first_name}" - {self.last_name} - {self.city} - {self.email}'

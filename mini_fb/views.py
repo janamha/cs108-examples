@@ -4,6 +4,7 @@
 # Description: Creates views to display profiles
 
 from ast import Delete
+import profile
 from .models import Profile, StatusMessage
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .forms import CreateProfileForm, UpdateProfileForm, CreateStatusMessageForm
@@ -87,6 +88,19 @@ class DeleteStatusMessageView(DeleteView):
         # reverse to show the person page
         return reverse('show_profile_page', kwargs={'pk':profile.pk})
 
+class ShowsNewsFeedView(DetailView):
+    '''A view to display a Profile's newsfeed'''
+
+    model = Profile # retrieve objects of type Profile from the database
+    template_name = 'mini_fb/show_news_feed.html'
+    context_object_name = 'profile' # how to find the data in the template file
+        
+class ShowPossibleFriendsView(DetailView):
+    'A view to display possible friends'
+    model = Profile # retrieve objects of type Profile from the database
+    template_name = 'mini_fb/show_possible_friends.html'
+    context_object_name = 'profile' # how to find the data in the template file
+
 def post_status_message(request, pk):
     '''
     Process a form submission to post a new status message.
@@ -122,3 +136,12 @@ def post_status_message(request, pk):
     url = reverse('show_profile_page', kwargs={'pk': pk})
     return redirect(url)
 
+def add_friend(request, profile_pk, friend_pk):
+    '''function to add a friend for a given profile'''
+    profile = Profile.objects.get(pk=profile_pk)
+    friend = Profile.objects.get(pk=friend_pk) 
+    profile.friends.add(friend)
+    profile.save()
+
+    url = reverse('show_profile_page', kwargs={'pk': profile_pk})
+    return redirect(url)

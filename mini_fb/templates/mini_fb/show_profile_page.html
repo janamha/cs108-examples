@@ -11,6 +11,9 @@
     <h1>{{profile.first_name}} {{profile.last_name}}<br></h1>
     <img src="{{profile.image_url}}" style="max-width: 400;"><br>
     <h4><a href="{% url 'update_profile' profile.pk %}">Edit this profile</a></h4>
+    <h4><a href="{% url 'news_feed' profile.pk %}">{{profile.first_name}}'s News Feed</a></h4>
+    <h4><a href="{% url 'show_possible_friends' profile.pk %}">Find Friends</a></h4>
+
 </center>
 {{profile.email}} <br>
 {{profile.city}} <br>
@@ -73,7 +76,7 @@ enctype="multipart/form-data">
                     {{f.first_name}} {{f.last_name}}
                 </td>
                 <td>
-                    <img src='{{f.image.url}}' style='max-width: 200;'>
+                    <img src='{{f.image_url}}' style='max-width: 200;'>
                 </td>
             </tr>
         {% endfor %}
