@@ -13,7 +13,7 @@ class Dancer(models.Model):
     dance = models.ForeignKey('Dance', on_delete=models.CASCADE)
 
 class Choreographer(models.Model):
-    '''Encapsulate the idea of a Choreographer.'''
+    '''Encapsulate the idea of a Chorepytographer.'''
 
     # data attributes of a Choreographer:
     id = models.BigIntegerField(blank=True)
