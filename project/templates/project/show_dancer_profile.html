@@ -10,7 +10,10 @@
 
 <center>
     <h1 style="color: azure">{{dancer.first_name}} {{dancer.last_name}}<br></h1>
-    <img src={{dancer.image.url}} style='max-width: 200;'>
+    {% if dancer.image %}
+        <img src="{{dancer.image.url}}" style='max-width: 200;'>
+    {% endif %}
+
 </center>
 <text style="color: azure">Contact Info: {{dancer.email}}</text> <br>
 <text style="color: azure">Level {{dancer.level}}</text><br>

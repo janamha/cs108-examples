@@ -12,13 +12,14 @@ class CreateDanceForm(forms.ModelForm):
     class Meta:
         '''additional data about this form'''
         model = Dance # which model to create
-        fields = ['song', 'image'] # which fields to create
+        fields = ['song', 'image', 'spotify'] # which fields to create
 
 class CreateDancerForm(forms.ModelForm):
     '''A form to create a Dancer object.'''
 
     class Meta:
         '''additional data about this form'''
+        
         model = Dancer # which model to create
         fields = ['first_name', 'last_name', 'level', 'email', 'dance'] # which fields to create
 
@@ -57,7 +58,7 @@ class UpdateRoomForm(forms.ModelForm):
 
 class LeaveSuggestionForm(forms.ModelForm):
     '''A form to leave a suggestion.'''
-
+    
     class Meta:
         '''additional data about this form'''
         model = Suggestion # which model to create
