@@ -31,4 +31,3 @@ class CreateStatusMessageForm(forms.ModelForm):
         '''additional data about this form'''
         model = StatusMessage # which model to create
         fields = ['message', 'image'] # which fields to create
-

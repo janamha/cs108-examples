@@ -1,0 +1,25 @@
+<!--
+# File: templates/show_room_profile.html
+# your name: Jana Mikaela Aguilar
+# your email: janamha@bu.edu
+# Description: Write html code this to show info of a specific room's profile
+-->
+{% extends 'project/base.html' %}
+
+{% block content %}
+
+<h1 style="color: azure"> Room {{room.number}}</h1>
+<body>
+    <text style="color: azure;">Dance: {{room.dance.song}}</text> <br>
+    <text style="color: azure">Choreographer: {{room.choreographer.first_name}} {{room.choreographer.last_name}}</text><br>
+    <br>
+    <text style="color: azure">Location:</text>      
+</body>
+
+<br>
+<iframe src="{{room.location}}" width="800" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<br>
+<br>
+<a style="color:azure" href="{% url 'update_room_form' room.pk %}">Edit this room's details</a>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+<!--
+# File: templates/show_dancer_profile.html
+# your name: Jana Mikaela Aguilar
+# your email: janamha@bu.edu
+# Description: Write html code this to show info of a specific dancer's profile
+-->
+{% extends 'project/base.html' %}
+
+{% block content %}
+
+<center>
+    <h1 style="color: azure">{{dancer.first_name}} {{dancer.last_name}}<br></h1>
+    <img src={{dancer.image.url}} style='max-width: 200;'>
+</center>
+<text style="color: azure">Contact Info: {{dancer.email}}</text> <br>
+<text style="color: azure">Level {{dancer.level}}</text><br>
+<text style="color: azure">Dance: {{dancer.dance.song}}</text>
+
+<h4><a style="color: azure" href="{% url 'update_dancer_form' dancer.pk %}">Edit this profile</a></h4>
+
+{% endblock %}

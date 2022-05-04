@@ -1,0 +1,34 @@
+<!--
+# File: templates/show_all_dances.html
+# your name: Jana Mikaela Aguilar
+# your email: janamha@bu.edu
+# Description: Write html code this to create a list of dances
+-->
+
+{% extends 'project/base.html' %}
+
+{% block content %}
+<h1 style="color:azure">Recital Directory</h1>
+<h2 style="color:azure">Showing all dances</h2>
+<center>
+<ul>
+    <table border=1 style="background-color: rgba(128, 128, 128, 0.807)">
+        <colgroup>
+            <col span="1">
+        </colgroup>
+        <tr>
+            <th><h3>Song</h3></th>
+        </tr>
+        {% for d in dances %}
+            <tr>
+                <td>
+                    <h3><a style="color:black" href="{% url 'show_dance_profile' pk=d.pk %}">{{d.song}}<br></a></h3>
+                </td>
+            </tr>
+        {% endfor %}
+    </table> 
+</ul>
+</center>
+
+<a style="color:azure" href="{% url 'create_dance_form' %}">Create New Dance</a>
+{% endblock %}

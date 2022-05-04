@@ -1,0 +1,20 @@
+<!--
+# File: templates/base.html
+# your name: Jana Mikaela Aguilar
+# your email: janamha@bu.edu
+# Description: Write html code this to create a standard 
+HTML tag for general formatting
+-->
+
+<html>
+    <body style="text-align:center; font-family:verdana;" background="https://media.timeout.com/images/105589092/image.jpg">
+    <head>
+            <a style="color:azure" href="{% url 'base' %}">Home</a> |
+            <a style="color: azure" href="{% url 'show_all_dancers' %}">Dancers</a> |
+            <a style="color: azure" href="{% url 'show_all_choreographers' %}">Choreographers</a> |
+            <a style="color: azure" href="{% url 'show_all_dances' %}">Dances</a> |
+            <a style="color: azure" href="{% url 'show_all_rooms' %}">Rooms</a> |
+    </head>
+    {% block content %}
+    {% endblock %}
+</html>

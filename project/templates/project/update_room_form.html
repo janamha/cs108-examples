@@ -1,0 +1,26 @@
+<!--
+# File: templates/update_room_form.html
+# your name: Jana Mikaela Aguilar
+# your email: janamha@bu.edu
+# Description: Write html code this to create edit a room
+-->
+{% extends 'project/base.html' %}
+
+{% block content %}
+
+<h1 style="color: azure;">Update a room</h1>
+
+<form method="POST"> <!-- HTTP POST to send data to the server -->
+    {% csrf_token %}
+    
+    <table style="color: azure;">
+    {{form.as_table}} <!-- table-style formatting -->
+    <tr>
+        <td></td> <!-- empty! -->
+        <td><input type="submit" value="Update"></td>
+    </tr>
+    </table>
+    
+</form>
+
+{% endblock %}

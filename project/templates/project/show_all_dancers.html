@@ -1,0 +1,47 @@
+<!--
+# File: templates/show_all_dancers.html
+# your name: Jana Mikaela Aguilar
+# your email: janamha@bu.edu
+# Description: Write html code this to create a list of dancers
+-->
+{% extends 'project/base.html' %}
+
+{% block content %}
+<h1 style="color:azure">Recital Directory</h1>
+<h2 style="color:azure">Showing all dancers</h2>
+<ul>
+    <table border=1 style="background-color: rgba(128, 128, 128, 0.807)">
+        <colgroup>
+            <col span="1" style="width: 15%">
+            <col span="1" style="width: 20%">
+            <col span="1" style="width: 20%">
+            <col span="1" style="width: 25%">
+        </colgroup>
+        <tr>
+            <th><h3>Name</h3></th>
+            <th><h3>Level</h3></th>
+            <th><h3>Email</h3></th>
+            <th><h3>Dance</h3></th>
+        </tr>
+        {% for dancer in dancers %}
+            <tr>
+                <td>                   
+                    <h3><a style="color:black"href="{% url 'show_dancer_profile' pk=dancer.pk %}">{{dancer.first_name}} {{dancer.last_name}}<br></a></h3>
+                </td>
+                <td>
+                    Level {{dancer.level}}
+                </td>
+                <td>
+                    {{dancer.email}}
+                </td>
+                <td>
+                    <a style="color:black" href="{% url 'show_dance_profile' pk=dancer.dance.pk %}">{{dancer.dance.song}}<br></a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table> 
+</ul>
+
+<a style="color:azure"href="{% url 'create_dancer_form' %}">Add New Dancer</a>
+
+{% endblock %}

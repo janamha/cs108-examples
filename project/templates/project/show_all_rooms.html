@@ -1,0 +1,48 @@
+<!--
+# File: templates/show_all_rooms.html
+# your name: Jana Mikaela Aguilar
+# your email: janamha@bu.edu
+# Description: Write html code this to create a list of rooms
+-->
+{% extends 'project/base.html' %}
+
+{% block content %}
+<center>
+<h1 style="color:azure">Recital Directory</h1>
+<h2 style="color:azure">Showing all rooms</h2>
+<ul>
+    <table border=1 style="background-color: rgba(128, 128, 128, 0.807)">
+        <colgroup>
+            <col span="1" style="width: 25%">
+            <col span="1" style="width: 25%">
+            <col span="1" style="width: 25%">
+            <col span="1" style="width: 25%">
+        </colgroup>
+        <tr>
+            <th><h3>Number</h3></th>
+            <th><h3>Dance</h3></th>
+            <th><h3>Choreographers</h3></th>
+            <th><h3>Location</h3></th>
+        </tr>
+        {% for r in rooms %}
+            <tr>
+                <td>
+                    {{r.number}}
+                </td>
+                <td>
+                    <a style="color:black" href="{% url 'show_dance_profile' pk=r.dance.pk %}">{{r.dance.song}}<br></a>
+                </td>
+                <td>
+                    {{r.choreographer.first_name}} {{r.choreographer.last_name}}
+
+                </td>
+                <td>
+                    <a style="color:black" href="{% url 'show_room_profile' pk=r.pk %}">View Details<br></a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table> 
+</ul>
+<a style="color:azure" href="{% url 'create_room_form' %}">Add New Room</a>
+</center>
+{% endblock %}

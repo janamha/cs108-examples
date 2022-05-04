@@ -1,0 +1,58 @@
+<!--
+# File: templates/home.html
+# your name: Jana Mikaela Aguilar
+# your email: janamha@bu.edu
+# Description: Write html code this to create a home page
+-->
+
+{% extends 'project/base.html' %}
+ 
+{% block content %}
+<h1 style="color: white;">Ballet Recital 2022</h1>
+
+<h2 style="color: azure;">Our Ballet Repertoire</h2>
+<body>
+    <table>
+        {% for dance in dances2%}
+            <td>
+                <text style="color: azure; font-size: small;">{{dance.song}}</text>
+                <iframe style="border-radius:12px; display: in;" src="{{dance.spotify}}" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe><br>
+            </td>
+        {% endfor %}
+        </tr>
+    
+    </table> 
+</body>
+
+<h3 style="color: azure;">Catch us at the Tsai Performance Center</h3> 
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2948.643703576121!2d-71.10675812024104!3d42.35011914382402!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e379f066b975f7%3A0xa5830d724a9e1224!2sTsai%20Performance%20Center!5e0!3m2!1sen!2sus!4v1651536194411!5m2!1sen!2sus" width="800" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+<br>
+
+
+<h5 style="color: azure;">Wanna see your favorite ballet next year? Leave a suggestion!</h5>
+
+<form method="POST" action="/project/submit_suggestion" 
+enctype="multipart/form-data">
+    <!-- HTTP POST to send data to the server -->
+    {% csrf_token %}
+    
+    <table style="color: azure;">
+    {{suggestion_form.as_table}} <!-- table-style formatting -->
+    <tr>
+        <td></td> <!-- empty! -->
+        <td><input type="submit" value='Submit'></td>
+    </tr>
+    </table>
+ 
+</form>
+
+<hr>
+<h3 style="color: azure">Shortcuts to Add to Directory</h3>
+<a style="color: azure" href="{% url 'create_dancer_form' %}">Add New Dancer</a> |
+<a style="color: azure" href="{% url 'create_dance_form' %}">Add New Dance</a> |
+<a style="color: azure" href="{% url 'create_choreographer_form' %}">Add New Choreographer</a> |
+<a style="color: azure" href="{% url 'create_room_form' %}">Add New Room</a> |
+
+{% endblock %}
+</body>

@@ -28,6 +28,7 @@ urlpatterns = [
     path('', include('pages.urls')),  ## add this new URL include
     path('quotes/', include('quotes.urls')), # include the URLs from our quotes project's urls.py file
     path('mini_fb/', include('mini_fb.urls')),  ## add this new URL include
+    path('project/', include('project.urls'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

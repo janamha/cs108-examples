@@ -1,0 +1,37 @@
+<!--
+# File: templates/show_all_choreographers.html
+# your name: Jana Mikaela Aguilar
+# your email: janamha@bu.edu
+# Description: Write html code this to create a list of choreographers
+-->
+{% extends 'project/base.html' %}
+
+{% block content %}
+<h1 style="color:azure">Recital Directory</h1>
+<h2 style="color:azure">Showing all choreographers</h2>
+<center>
+<ul>
+    <table border=1 style="background-color: rgba(128, 128, 128, 0.807)">
+        <colgroup>
+            <col span="1" style="width: 50%">
+            <col span="1" style="width: 50%">
+        </colgroup>
+        <tr>
+            <th><h3>Name</h3></th>
+            <th><h3>Email</h3></th>
+        </tr>
+        {% for c in choreographers %}
+            <tr>
+                <td>
+                    {{c.first_name}} {{c.last_name}}
+                </td>
+                <td>
+                    {{c.email}}
+                </td>
+            </tr>
+        {% endfor %}
+    </table> 
+</ul>
+<a style="color:azure" href="{% url 'create_choreographer_form' %}">Add New Choreographer</a>
+</center>
+{% endblock %}

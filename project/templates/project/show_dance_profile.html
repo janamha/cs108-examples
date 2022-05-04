@@ -1,0 +1,27 @@
+<!--
+# File: templates/show_dance_profile.html
+# your name: Jana Mikaela Aguilar
+# your email: janamha@bu.edu
+# Description: Write html code this to show info of a specific dance's profile
+-->
+{% extends 'project/base.html' %}
+
+{% block content %}
+<center>
+    <h1  style="color: azure">{{dance.song}}<br></h1>
+    <img src="{{dance.image}}" style="max-width: 800;"><br>
+    <br>
+    <br>
+    <text style="color: azure"> Listen to an excerpt of the piece: </text><br>
+    <iframe style="border-radius:12px" src="{{dance.spotify}}" width="50%" height="100" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe><br>
+</center>
+
+<br>
+
+<p align="justify">
+    <text style="color: azure">Description:</text><br>
+    <text style="color: white; background-color: rgba(128, 128, 128, 0.807);">{{dance.desc}}</text>
+</p>
+<a style="color: azure" href="{% url 'delete_dance' dance_pk=dance.pk%}">Delete Dance</a>
+
+{% endblock %}
